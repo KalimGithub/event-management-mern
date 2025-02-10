@@ -1,0 +1,94 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "tailwindcss";
+
+.event-edit-modal input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 0px 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.event-edit-modal input:focus,
+select:focus {
+  border: none;
+  outline: 1px solid #007bff;
+}
+
+p {
+  margin: 0;
+}
+.header-link {
+  text-decoration: none !important;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-inline-start: 50px;
+  margin-inline-end: 50px;
+}
+table td,
+th {
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: #d0e1f5;
+}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+table tr:hover {
+  background-color: #f2f2f2;
+}
+.table-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 40px 50px;
+}
+
+.create-btn,
+.login-btn {
+  text-decoration: none;
+  color: #007bff;
+}
+logout-btn:hover {
+  transition: all 0.3s ease-in-out;
+}
+.create-btn:hover {
+  color: white;
+  background-color: #007bff;
+  transition: all 0.3s ease-in-out;
+}
+
+li {
+  list-style-type: disc;
+}
+.login-btn:hover {
+  color: #007bff !important;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.register-btn {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff !important;
+}
+.login-btn {
+  text-decoration: none;
+  color: #007bff;
+  background-color: white !important;
+}
+.started-btn {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff !important;
+}
+
+.started-btn:hover {
+  color: #007bff !important;
+  background-color: white !important;
+  transition: all 0.3s ease-in-out;
+}
