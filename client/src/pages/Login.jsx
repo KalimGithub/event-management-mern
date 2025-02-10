@@ -29,22 +29,37 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Enter Email Here"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter Password Here"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
+    <div className="flex flex-col items-center justify-center w-[30vw] rounded border shadow px-6 py-8 mx-auto mt-[200px]">
+      <h4>Login</h4>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email">Enter Email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter Email Here"
+            value={email}
+            className="px-4 py-2 border"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="password">Enter Password:</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter Password Here"
+            value={password}
+            className="px-4 py-2 border"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white cursor-pointer rounded"
+          type="submit"
+        >
+          Login
+        </button>
       </form>
     </div>
   );

@@ -24,7 +24,7 @@ const createEventController = async (req, res) => {
 };
 
 const editEventController = async (req, res) => {
-  const { name, description, startDate, endDate, time, vanue, category } =
+  const { name, description, startDate, endDate, time, venue, category } =
     req.body;
   const id = req.params.id;
   // console.log(id);
@@ -39,7 +39,7 @@ const editEventController = async (req, res) => {
         startDate,
         endDate,
         time,
-        vanue,
+        venue,
         category,
       }
     );

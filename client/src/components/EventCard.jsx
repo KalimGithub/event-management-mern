@@ -6,15 +6,15 @@ import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 
 function EventCard(event) {
-  //   console.log(event);
+  // console.log(event);
   const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [time, setTime] = useState("");
-  const [venue, setVenue] = useState("");
-  const [category, setCategory] = useState("");
+  const [name, setName] = useState(event.event.name);
+  const [description, setDescription] = useState(event.event.description);
+  const [startDate, setStartDate] = useState(event.event.startDate);
+  const [endDate, setEndDate] = useState(event.event.endDate);
+  const [time, setTime] = useState(event.event.time);
+  const [venue, setVenue] = useState(event.event.venue);
+  const [category, setCategory] = useState(event.event.category);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -56,9 +56,19 @@ function EventCard(event) {
         <td>{event.event.time}</td>
         <td>{event.event.venue}</td>
         <td className="text-start">{event.event.description}</td>
-        <td>
-          <button onClick={handleShow}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+        <td className="flex gap-2 items-center justify-center px-2">
+          <button
+            className="px-4 py-2 bg-blue-500 cursor-pointer text-white rounded"
+            onClick={handleShow}
+          >
+            Edit
+          </button>
+          <button
+            className="px-4 py-2 bg-red-500 cursor-pointer text-white rounded"
+            onClick={handleDelete}
+          >
+            Delete X
+          </button>
         </td>
       </tr>
       {/* <EditEventForm /> */}
@@ -109,7 +119,7 @@ function EventCard(event) {
                 Enter Event Venue:
               </label>
               <input
-                type="venue"
+                type="text"
                 placeholder="Enter Venue"
                 value={venue}
                 className="w-full mx-0 my-2"

@@ -14,6 +14,7 @@ function Dashboard() {
   useEffect(() => {
     const getEvents = async () => {
       try {
+        console.log(eventData);
         const response = await dashboardApi();
         setIsLoading(true);
         setEventData(response.data);
@@ -40,12 +41,12 @@ function Dashboard() {
           Welcome to the Event Management Dashboard 😊.
           <br></br>
           <span className="max-w-[1/2]">
-            Explore the magic of our application 'EVENTIFY'. A go-to solution
-            for managing amazing events effortlessly. From easy sign-ups to
-            registering and managing event schedules, our user-friendly platform
-            has everything you need for a flawless experience. With powerful
-            features, trust our system to handle the details, and let's bring
-            your event vision to life!!!
+            Explore the magic of our application. A go-to solution for managing
+            amazing events effortlessly. From easy sign-ups to registering and
+            managing event schedules, our user-friendly platform has everything
+            you need for a flawless experience. With powerful features, trust
+            our system to handle the details, and let's bring your event vision
+            to life!!!
           </span>
         </p>
         <div className="flex justify-end mx-0 w-full text-white !important gap-2 mt-12 mb-0">

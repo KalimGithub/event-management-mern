@@ -8,7 +8,7 @@ function CreateEventForm() {
   const [endDate, setEndDate] = useState("");
   const [time, setTime] = useState("");
   const [venue, setVenue] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("online");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,57 +27,105 @@ function CreateEventForm() {
     console.log("form submitted");
   };
   return (
-    <div>
-      <h1>Create Event Form</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Event Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Enter Start Date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Enter End Date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-        <input
-          type="time"
-          placeholder="Enter Time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <input
-          type="venue"
-          placeholder="Enter Venue"
-          value={venue}
-          onChange={(e) => setVenue(e.target.value)}
-        />
-        <label htmlFor="category">Choose a category:</label>
-        <select
-          name="category"
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+    <div className="flex flex-col items-center justify-center w-[40vw] my-6 rounded-lg border shadow px-6 py-4 mx-auto mt-[100px]">
+      <h1 className="text-lg font-semibold font-mono">Create Event Form</h1>
+      <form
+        className="flex flex-col items-center justify-between gap-2 w-[80%]"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col gap-2 w-full my-1">
+          <label htmlFor="name">Enter Event Name:</label>
+          <input
+            type="text"
+            placeholder="Enter Event Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="px-4 py-2 border w-full rounded mb-2"
+            required
+          />
+        </div>
+
+        <div className="flex flex-col gap-2 w-full my-1">
+          <label htmlFor="description">Enter Description:</label>
+          <input
+            type="text"
+            placeholder="Enter description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="px-4 py-2 border w-full rounded mb-2"
+            required
+          />
+        </div>
+        <div className="flex flex-col gap-2 w-full my-1">
+          <label htmlFor="venue">Enter Venue:</label>
+          <input
+            type="venue"
+            placeholder="Enter Venue"
+            value={venue}
+            onChange={(e) => setVenue(e.target.value)}
+            className="px-4 py-2 border w-full rounded mb-2"
+            required
+          />
+        </div>
+
+        <div className="flex gap-2 w-full">
+          <div className="flex flex-col gap-2 w-1/2">
+            <label htmlFor="startDate">Enter Start Date:</label>
+            <input
+              type="date"
+              placeholder="Enter Start Date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="px-4 py-2 border w-full rounded mb-2"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2 w-1/2">
+            <label htmlFor="endDate">Enter End Date:</label>
+            <input
+              type="date"
+              placeholder="Enter End Date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="px-4 py-2 border w-full rounded mb-2"
+              required
+            />
+          </div>
+        </div>
+        <div className="flex gap-2 w-full">
+          <div className="flex flex-col gap-2 w-1/2">
+            <label htmlFor="time">Enter Time:</label>
+            <input
+              type="time"
+              id="time"
+              placeholder="Enter Time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="px-4 py-2 border w-full rounded mb-2"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2 w-1/2">
+            <label htmlFor="category">Choose a category:</label>
+            <select
+              name="category"
+              id="category"
+              className="px-4 py-2 border w-full rounded mb-2"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="online">Online</option>
+              <option value="offline">Offline</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+        </div>
+        <button
+          className="text-white bg-blue-500 cursor-pointer px-4 py-2 rounded text-center mx-auto"
+          type="submit"
         >
-          <option value="online">Online</option>
-          <option value="offline">Offline</option>
-          <option value="hybrid">Hybrid</option>
-        </select>
-        <button type="submit">Create Event</button>
+          Create Event
+        </button>
       </form>
     </div>
   );
