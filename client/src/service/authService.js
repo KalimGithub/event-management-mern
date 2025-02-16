@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const AUTH_URL = "http://localhost:3000/api/user"; // for local development
-// const AUTH_URL = `https://event-management-mern-gt0l.onrender.com/api/user`; // for deployment
+const AUTH_URL = `https://event-management-mern-gt0l.onrender.com/api/user`; // for deployment
 
 const registerApi = async (userData) => {
   try {
