@@ -23,23 +23,13 @@ const eventEditApi = async ({ id }, { data }) => {
       ...data,
     });
     if (response.data) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     }
   } catch (error) {
     console.error(error);
     return error;
   }
-  // try {
-  //   const response = await axios.get(`${API_URL}`);
-  //   if (response.data) {
-  //     console.log(response.data);
-  //     return response.data;
-  //   }
-  // } catch (error) {
-  //   console.error(error);
-  //   return error;
-  // }
 };
 
 const eventCreateApi = async ({

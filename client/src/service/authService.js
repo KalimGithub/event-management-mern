@@ -9,7 +9,7 @@ const registerApi = async (userData) => {
       withCredentials: true,
     });
     if (response.data) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     }
   } catch (error) {
@@ -38,7 +38,7 @@ const logoutApi = async () => {
       {},
       { withCredentials: true }
     );
-    console.log(response);
+    // console.log(response);
   } catch (error) {
     console.log("errorr", error);
     return error;
