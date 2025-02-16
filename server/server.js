@@ -7,11 +7,13 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
 import eventRouter from "./routes/event.routes.js";
+import path from "path";
 
 // constants
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
+const _dirname = path.resolve();
 
 // middlewars
 app.use(express.json());
@@ -27,6 +29,11 @@ app.use(cookieParser());
 // routes
 app.use("/api/user", userRouter);
 app.use("/api/dashboard", eventRouter);
+
+app.use(express.static(path.join(_dirname, "client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
+}); // after all routes and middlewares
 
 // mongo db connection
 mongoose
