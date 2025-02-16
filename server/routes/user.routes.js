@@ -4,7 +4,7 @@ import {
   userLogoutController,
   userRegisterController,
 } from "../controllers/user.controllers.js";
-import { isAuth } from "../middlewares/isAuth.js";
+// import { isAuth } from "../middlewares/isAuth.js";
 
 const userRouter = express.Router();
 
