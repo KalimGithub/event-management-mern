@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { eventCreateApi } from "../service/eventApiService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function CreateEventForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -22,9 +22,9 @@ function CreateEventForm() {
       venue,
       description,
     });
-    console.log(response);
+    // console.log(response);
     navigate("/dashboard");
-    console.log("form submitted");
+    // console.log("form submitted");
   };
   return (
     <div className="flex flex-col items-center justify-center w-[40vw] my-6 rounded-lg border shadow px-6 py-4 mx-auto mt-[100px]">
@@ -86,7 +86,17 @@ function CreateEventForm() {
               type="date"
               placeholder="Enter End Date"
               value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              onChange={(e) => {
+                let eventEndDate = +new Date(startDate);
+                let eventStartDate = +new Date(e.target.value);
+
+                if (eventEndDate - eventStartDate > 0) {
+                  alert("End date should be greater than start date");
+                  setEndDate("");
+                } else {
+                  setEndDate(e.target.value);
+                }
+              }}
               className="px-4 py-2 border w-full rounded mb-2"
               required
             />
@@ -120,12 +130,22 @@ function CreateEventForm() {
             </select>
           </div>
         </div>
-        <button
-          className="text-white bg-blue-500 cursor-pointer px-4 py-2 rounded text-center mx-auto"
-          type="submit"
-        >
-          Create Event
-        </button>
+        <div className="flex gap-2 w-full justify-between">
+          <button
+            className="text-white bg-blue-500 cursor-pointer px-3 py-2 rounded text-center"
+            type="submit"
+          >
+            Create Event
+          </button>
+          <button>
+            <Link
+              to="/dashboard"
+              className="cancel-btn text-white bg-red-500 cursor-pointer px-5 py-2 rounded text-center"
+            >
+              Cancel
+            </Link>
+          </button>
+        </div>
       </form>
     </div>
   );

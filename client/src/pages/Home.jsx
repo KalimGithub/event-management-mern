@@ -26,14 +26,12 @@ function Home() {
             A new Journey of <b> Event Management</b> awaits you
           </li>
         </ul>
-        <button className="min-w-[150px] font-semibold bg-blue-500 px-8 py-2 rounded border-2 border-blue-500 hover:bg-white">
-          <Link
-            to={"/login"}
-            className="started-btn no-underline text-white hover:bg-white"
-          >
-            Get Started
-          </Link>
-        </button>
+        <Link
+          to={"/login"}
+          className="started-btn no-underline min-w-[150px] text-center text-white hover:bg-white border-2 border-blue-500 px-6 py-2 hover:shadow-2xl rounded-sm"
+        >
+          Get Started
+        </Link>
       </div>
       <div className="border px-8 py-6 flex flex-col items-start justify-center rounded-xl shadow m-auto">
         <p className="text-start my-2">Already have an account Login Here</p>
@@ -43,7 +41,7 @@ function Home() {
         >
           Login
         </Link>
-        <p className="text-start my-2">dont have an account register Here</p>
+        <p className="text-start my-2">Don't have an account register Here</p>
         <Link
           className="register-btn m-auto w-full py-2 min-w-[150px] mb-4 bg-white text-blue-500 border-2 text-center border-blue-500 cursor-pointer rounded"
           to={"/register"}

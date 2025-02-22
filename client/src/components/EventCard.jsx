@@ -7,6 +7,7 @@ import Loader from "./Loader";
 
 function EventCard(event) {
   // console.log(event);
+
   const [show, setShow] = useState(false);
   const [name, setName] = useState(event.event.name);
   const [description, setDescription] = useState(event.event.description);
@@ -21,9 +22,10 @@ function EventCard(event) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleEdit = async () => {
+  const handleEdit = async (e) => {
+    e.preventDefault();
     setShow(!show);
-    console.log("Edit button clicked");
+    // console.log("Edit button clicked");
     const response = await eventEditApi(
       { id: event.event._id },
       { data: { name, description, startDate, endDate, time, venue, category } }
@@ -37,26 +39,29 @@ function EventCard(event) {
     window.location.reload();
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.preventDefault();
     if (confirm("Are you sure want to delete this Event?")) {
       const response = await eventDeleteApi({ id: event.event._id });
       if (response.status === 200) {
+        setIsLoading(true);
         console.log("Event deleted successfully");
       }
     }
+    setIsLoading(false);
     window.location.reload();
   };
   return (
     <>
       <tr>
-        <td>{event.event.name}</td>
+        <td className="min-w-[150px]">{event.event.name}</td>
         <td>{event.event.category}</td>
         <td>{event.event.startDate}</td>
         <td>{event.event.endDate}</td>
         <td>{event.event.time}</td>
         <td>{event.event.venue}</td>
-        <td className="text-start">{event.event.description}</td>
-        <td className="flex gap-2 items-center justify-center px-2">
+        <td className="text-start min-w-[300px]">{event.event.description}</td>
+        <td className="flex gap-2 items-center justify-center px-2 max-w-[300px]">
           <button
             className="px-4 py-2 bg-blue-500 cursor-pointer text-white rounded"
             onClick={handleShow}

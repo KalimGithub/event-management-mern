@@ -19,7 +19,8 @@ const _dirname = path.resolve();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://event-management-mern-gt0l.onrender.com/",
+    // origin: "http://localhost:5173", // for local development
+    origin: "https://event-management-mern-gt0l.onrender.com/", // for deployment
     methods: ["GET", "POST"],
     credentials: true,
   })

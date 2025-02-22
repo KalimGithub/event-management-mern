@@ -86,9 +86,19 @@ li {
   color: white;
   background-color: #007bff !important;
 }
+.cancel-btn {
+  text-decoration: none;
+}
 
-.started-btn:hover {
+.started-btn:hover,
+.register-btn:hover {
   color: #007bff !important;
   background-color: white !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+  color: white !important;
+  background-color: #007bff !important;
   transition: all 0.3s ease-in-out;
 }

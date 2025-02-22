@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// const API_URL = "http://localhost:3000/api/dashboard";
 // const API_URL = "http://localhost:3000/api/dashboard"; // for local development
 const API_URL = `https://event-management-mern-gt0l.onrender.com/api/dashboard`; // for deployment
 
@@ -23,7 +24,7 @@ const eventEditApi = async ({ id }, { data }) => {
       ...data,
     });
     if (response.data) {
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     }
   } catch (error) {

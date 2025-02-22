@@ -11,14 +11,17 @@ function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  let eventEndDate;
+  let currentDate;
+
   useEffect(() => {
     const getEvents = async () => {
       try {
-        console.log(eventData);
+        // console.log(eventData);
         const response = await dashboardApi();
         setIsLoading(true);
         setEventData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +32,7 @@ function Dashboard() {
 
   const handleLogout = async () => {
     await logoutApi();
-    alert("Logged out");
+    alert("Logged out Successfully");
     setIsLoading(true);
     navigate("/login");
   };
@@ -83,11 +86,29 @@ function Dashboard() {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-              {eventData.map((event, index) => {
-                return <EventCard event={event} key={index} />;
-              })}
-            </tbody>
+            {eventData.length > 0 ? (
+              <tbody>
+                {eventData.map((event, index) => {
+                  eventEndDate = +new Date(event.endDate);
+                  currentDate = +new Date();
+                  let diff = eventEndDate - currentDate;
+                  if (diff > 0) {
+                    return <EventCard event={event} key={index} />;
+                  } else {
+                    return null;
+                  }
+                  // return <EventCard event={event} key={index} />;
+                })}
+              </tbody>
+            ) : (
+              <tbody>
+                <tr className="w-full">
+                  <td className="border-none !important" colSpan="8">
+                    No Events found!! Try Creating new event
+                  </td>
+                </tr>
+              </tbody>
+            )}
           </table>
         </>
         {/* past Events */}
@@ -109,11 +130,29 @@ function Dashboard() {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-              {eventData.map((event, index) => {
-                return <EventCard event={event} key={index} />;
-              })}
-            </tbody>
+            {eventData.length > 0 ? (
+              <tbody>
+                {eventData.map((event, index) => {
+                  eventEndDate = +new Date(event.endDate);
+                  currentDate = +new Date();
+                  let diff = eventEndDate - currentDate;
+                  if (diff < 0) {
+                    return <EventCard event={event} key={index} />;
+                  } else {
+                    return null;
+                  }
+                  // return <EventCard event={event} key={index} />;
+                })}
+              </tbody>
+            ) : (
+              <tbody>
+                <tr className="w-full">
+                  <td className="border-none !important" colSpan="8">
+                    No Events found !! Try Creating new event
+                  </td>
+                </tr>
+              </tbody>
+            )}
           </table>
         </>
       </div>

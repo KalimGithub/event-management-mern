@@ -22,7 +22,7 @@ function Login() {
       } else {
         alert("Invalid Credentials");
       }
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       alert("Invalid credentials", error.message);
     }

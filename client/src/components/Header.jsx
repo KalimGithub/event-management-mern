@@ -3,7 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 function Header() {
   return (
     <div className="header w-full h-[70px] fixed top-0 left-0 bg-blue-500 text-white flex items-center px-4 py-6 justify-between">
-      <p className="text-2xl font-semibold font-sans">Event Web App</p>
+      <Link
+        to={"/"}
+        className="header-link text-3xl font-semibold font-sans text-white no-underline cursor-pointer hover:opacity-75 ease-in-out"
+      >
+        Evently
+      </Link>
       <div className="flex items-center justify-between gap-2">
         <Link
           to={"/"}
